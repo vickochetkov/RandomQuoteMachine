@@ -1,0 +1,56 @@
+body {    
+  font-family: 'Oswald', Impact, sans-serif !important;
+  color: rgb(102, 102, 102) !important;
+}
+
+.body-width {
+  width: 90%;
+  min-height: 800px;
+  margin: 15px;
+  padding: 15px;
+  border: 2px solid #009688;
+  background-image: url('imgs/10.jpg');
+  background-repeat: no-repeat;
+  background-size: auto 800px;
+  /*background-color: #00CFBB;*/
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin: 200px;
+    border-radius: 10px;
+    background-color: #00CFBB;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.button {
+  border:0;   
+  padding:15px 0;
+  font-size:1.3rem;
+  font-weight: bold;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:#1598af;
+  color: #ffffff;
+  transition:all.5s ease;
+  border-radius: 5px;
+  cursor: pointer;
+  display:block;
+  width:100%;    
+}
+
+a.new {
+  color: white;  
+}
+
+img.bkgr {
+  display:block;  
+  height: 800px;     
+  border-radius:80%;  
+  margin: 20px auto auto 20px;
+}

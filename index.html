@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                    <!-- Google Fonts and Icons Awesome -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"> 
+  <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Theme styles -->
+  <!-- Required css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="index.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+  <!-- Latest compiled and minified JavaScript -->  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+ 
+  <title>My Quote Machine</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <script>
+  $(document).ready(function() {
+
+      $("#getQuote").on("click", function(){
+        $.getJSON("https://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en", function(json) {
+                
+        $(".quote").html('<h4><i>" ' + json.quoteText + ' "</i></h4>');
+        $(".author").html('<p id="author"> —  ' + json.quoteAuthor + '</p>');
+        });
+      });
+
+      $('#tweet-this').click(function() {
+        var tweetQuote = $(".quote").text();
+        var tweetAuthor = $(".author").text();
+          window.open('https://twitter.com/intent/tweet?text=' + tweetQuote + ' ' + tweetAuthor + '.', '_blank');           
+      });
+
+      $('#getQuote').click(function() {
+        var randImg = 'url("' + 'imgs/' + (Math.floor(Math.random() * 24) + 1) + '.jpg' + '")';
+        console.log(randImg);          
+        $('.body-width').css('background-image', randImg);                     
+      });
+    });
+  </script>
+  
+<div class = "text-center">
+  <h1>Quote Machine</h1><br>
+</div>
+
+<div class="container body-width">
+  <div class="row">
+    <div class="col-1">
+      <i class="fas fa-quote-left fa-3x fa-border"></i>
+    </div>
+    <div class="col-11">
+      <div class="card-deck also">
+        <div class="card text-white bg-info">
+          <br><h4 class="text-center quote"><i> " Do, or do not. There is no try. "</i></h4>
+          <h5 class="text-center author"> — Yoda</h5><br>
+        </div>    
+      </div>
+    </div>      
+  </div><br>
+  
+  <div class = "row text-center">
+    <div class="col-6">    
+      <button id = "getQuote" class = "button">Get Quote</button>
+    </div>
+    <div class="col-6">    
+      <button class="button" id = "tweet-this"><a class="twitter-share-button new" href="https://twitter.com/intent/tweet" data-size="large" target="_blank"><i class="fab fa-1x fa-twitter"></i> Twitter</button>    
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>
