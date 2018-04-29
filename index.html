@@ -33,7 +33,7 @@
   $(document).ready(function() {
 
       $("#getQuote").on("click", function(){
-        $.getJSON("https://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en", function(json) {
+        $.getJSON("https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(json) {
                 
         $(".quote").html('<h4><i>" ' + json.quoteText + ' "</i></h4>');
         $(".author").html('<p id="author"> —  ' + json.quoteAuthor + '</p>');
